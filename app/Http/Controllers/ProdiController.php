@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use PhpParser\Node\Expr\Cast\String_;
 
 class ProdiController extends Controller
 {
@@ -49,9 +50,10 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(String $id)
     {
-        //
+        $prodi = Prodi::findOrFail($id);
+        return view('prodi.edit', compact('prodi'));
     }
 
     /**
